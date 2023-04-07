@@ -94,11 +94,11 @@ function Discover() {
 
 
   return (
-    <div className='text-black   m-4 '>
+    <div className='text-black   mt-4 mx-4 '>
       <p className='text-cyan-300 m-8'>Hi ,Welcome to your EPL Dasboard 😎</p>
-      <div className='flex '>
+      <div className='flex flex-col lg:flex-row'>
         <div className='flex flex-col  '>
-   <h1 className='text-white flex justify-center items-center'>FEATURED</h1>
+   <h1 className='text-white lg:flex justify-center items-center'>FEATURED</h1>
    {MOD.map((mod) => (
   <div >
    <div className = 'w-[55vw] lg:h-[350px] border  px-4 lg:pt-4 bg-[url("./Ppl.png")]  bg-cover '>
@@ -120,19 +120,19 @@ function Discover() {
 
 
 </div> ))}</div>
-<div className='mx-12 '>
+<div className='lg:mx-12 '>
 
    
 
    
      
-   <div  className='flex flex-col text-white bg-gray-700 p-4 border rounded-3xl border-none  h-[450px] overflow-auto' >
-   <h1 className='text-white flex justify-center items-center'>FIXTURES</h1> 
+   <div  className=' text-white bg-gray-700 lg:p-4 border rounded-3xl border-none m-4 lg:h-[450px] h-[5%] sm:overflow-auto flex flex-row lg:flex-col' >
+   <h1 className='text-white lg:flex justify-center items-center '>FIXTURES</h1> 
 
   {fixtures.map((fixture) => (
    
 
-  <div className=' p-4 m-4 border rounded-lg border-none bg-gray-950 text-sm'>
+  <div className=' lg:p-4 m-4 border rounded-lg border-none bg-gray-950 text-sm'>
  <p className='flex justify-center items-center text-lime-300 '>{fixture?.league?.round}</p>
  <p className='flex justify-center items-center text-cyan-300'><p className='mr-4'><MdStadium  /></p>{fixture?.fixture?.venue?.name}</p> 
  <p className='flex justify-center items-center text-cyan-300'>{fixture?.fixture?.date}</p>
@@ -145,14 +145,14 @@ function Discover() {
 </div>
 
 </div>
-<div className='flex justify-around  w-[87vw] '>
-<div className=' text-white w-[60%] '> 
+<div className='lg:flex-row justify-around  w-[87vw] flex flex-col '>
+<div className=' text-white lg:w-[60%] '> 
 <div className='  '>
   
   <h1 className='text-white flex justify-center items-center'>LEAGUE TABLE</h1>
 
-  <div className='bg-gray-950 pt-8'> 
-<table className='table-auto m-4   '>
+  <div className='bg-gray-950 pt-8 '> 
+<table className='table-auto m-4  '>
       <thead className='  '>
         <tr className='  text-lime-300 px-4 border-b border-cyan-300' >
           <th className='px-4' >Rank</th>
@@ -241,7 +241,7 @@ function Discover() {
 </div>
 </div>
 </div>
-<div className="h-30 bg-black m-12">
+<div className="h-30 bg-black mt-24">
 ytttfhhbhhggghhhhhhhhhhhrrjjjjh
 </div>
 
