@@ -177,46 +177,47 @@ function Discover() {
 
 </div>     );
       })} </div>
-
 <div className='lg:mx-12 lg:mt-[-50px] mt-0'>
      
-   <div  className=' text-white bg-gray-700 lg:p-4 border rounded-3xl border-none m-4   sm:overflow-auto flex flex-row lg:flex-col' >
-   <h1 className='text-white lg:flex justify-center items-center '>FIXTURES</h1> 
+     <div  className=' text-white bg-gray-700 lg:p-4 border rounded-3xl border-none m-4    flex flex-row lg:flex-col'style={{ overflowX: 'auto', maxWidth: '100%' }} >
+     <h1 className='text-white lg:flex justify-center items-center '>FIXTURES</h1> 
+    
+    {fixtures.map((fixture) => 
+     {
+      const fixtureDate = new Date(fixture?.fixture?.date);
+      const fixtureDateString = fixtureDate.toDateString();
+      const fixtureTimeString = fixtureDate.toLocaleTimeString('en-US', {hour12: true, hour: 'numeric', minute:'numeric'});
+      return (
   
-  {fixtures.map((fixture) => 
-   {
-    const fixtureDate = new Date(fixture?.fixture?.date);
-    const fixtureDateString = fixtureDate.toDateString();
-    const fixtureTimeString = fixtureDate.toLocaleTimeString('en-US', {hour12: true, hour: 'numeric', minute:'numeric'});
-    return (
-
-  <div className=' lg:p-4 m-4 border rounded-lg border-none bg-gray-950 text-sm '>
- <p className='flex justify-center items-center text-lime-300 '>{fixture?.league?.round}</p>
- <p className='flex justify-center items-center text-cyan-300'><p className='mr-4'><MdStadium  /></p>{fixture?.fixture?.venue?.name}</p> 
- <p className='flex justify-center items-center text-cyan-300 '>{fixtureDateString }&nbsp;&nbsp;&nbsp;{fixtureTimeString}</p>
-  <div className='flex justify-center items-center text-lime-300'>
-<div className='flex flex-col p-4'><img src={fixture?.teams?.home?.logo} className=" w-8 h-8 "/> <p className='pr-2'> {fixture?.teams?.home?.name}</p> </div> VS <div className='flex flex-col p-4'><img src={fixture?.teams?.away?.logo} className="  w-8 h-8 "/><p className='pr-2' >{fixture?.teams?.away?.name}</p></div>
-
-  </div> </div>
-  );
-      })} </div>
+    <div className=' lg:p-4 m-4 border rounded-lg border-none bg-gray-950 text-sm '>
+   <p className='flex justify-center items-center text-lime-300 '>{fixture?.league?.round}</p>
+   <p className='flex justify-center items-center text-cyan-300'><p className='mr-4'><MdStadium  /></p>{fixture?.fixture?.venue?.name}</p> 
+   <p className='flex justify-center items-center text-cyan-300 '>{fixtureDateString }&nbsp;&nbsp;&nbsp;{fixtureTimeString}</p>
+    <div className='flex justify-center items-center text-lime-300'>
+  <div className='flex flex-col p-4'><img src={fixture?.teams?.home?.logo} className=" w-8 h-8 "/> <p className='pr-2'> {fixture?.teams?.home?.name}</p> </div> VS <div className='flex flex-col p-4'><img src={fixture?.teams?.away?.logo} className="  w-8 h-8 "/><p className='pr-2' >{fixture?.teams?.away?.name}</p></div>
   
-</div>
+    </div> </div>
+    );
+        })} </div>
+    
+  </div>
+
 
 </div>
 
 
 <div className='lg:flex-row justify-around  w-[87vw]  '>
-<div className=' text-white lg:w-[60%] bg-gray-700   border rounded-3xl border-none lg:mt-[-700px] mt-0'> 
-<h1 className='flex justify-center items-center'>TOP ASSISTS</h1>
-<div className='h-[200px] border flex flex-row' style={{  overflowX: 'auto' }} >
+<div className=' lg:w-[60%] bg-gray-700   border rounded-3xl border-none lg:mt-[-700px] '> 
+<h1 className='flex justify-center items-center text-white p-6 text-cyan-300'>TOP SCORERS</h1>
+<div className='h-[200px] bg-gray-950 flex flex-row' style={{  overflowX: 'auto' }} >
 <div className='flex justify-center '>
   {scorers.map((scorer) => (
-    <div className='flex flex-col items-center m-4 space-x-8 text-sm' key={scorer.player.id}>
-      <img src={scorer.player.photo} className="w-16 h-16 border-none rounded-full " />
-      <p className='mt-2  pl-[-10px] text-lime-300 flex justify-start items-start' >{scorer.player.name}</p>
+    <div className='flex flex-col items-center m-4 space-x-[20px] text-sm relative' key={scorer.player.id}>
+      <img src={scorer.player.photo} className="w-16 h-16 p-[6px] border-cyan-300 border rounded-full " />
+      <p className='absolute top-[20%] left-[-24px] '><img src={scorer.statistics[0].team.logo} className=" w-7 m-2 border h-7 border rounded-full p-[2px] bg-gray-950 "/></p>
+     <div className=''> <p className='mt-2  pl-[-10px] text-lime-300  ' >{scorer.player.name}</p>
       <p className='text-cyan-300'>{scorer.statistics[0].goals.total}</p>
-    </div>
+    </div></div>
   ))}
 </div>
 
@@ -225,47 +226,79 @@ function Discover() {
 
 
 
-</div>
+
 </div>
 
-<div className='  lg:w-[60%] bg-gray-700  mt-8  w-[350px]' >
-    <h1 className='text-white flex justify-center items-center' >LEAGUE TABLE</h1>
-    <div className='bg-gray-950 pt-8 w-[100%]' >
-      <table className='table-auto m-4'style={{  overflowX: 'auto' }} >
-        <thead className='  '>
-          <tr className='  text-lime-300 px-4 border-b border-cyan-300' >
-            <th className='px-4' >Rank</th>
-            <th className=''>Team</th>
-            <th className='px-4'>Played</th>
-            <th className='px-4'>Form</th>
-            <th className='px-4'>GD</th>
-            <th className='px-4'>PTS</th>
+
+
+</div>
+
+<div className=' text-white mt-8 bg-gray-700 p-4 border rounded-3xl border-none lg:w-[60%] w-full ' >
+<h1 className='flex justify-center items-center'>TOP ASSISTS</h1>
+
+<div className='bg-gray-950  text-white border-black lg:border rounded-3xl  h-[400px] overflow-auto'>
+
+<table className="table-auto lg:m-8 lg:w-[40vw] w-full p-4">
+  <thead className=''>
+    <tr className='border-b  border-cyan-300 text-lime-300 flex justify-between ml-4'>
+      <th className=''>Player</th>
+      
+      <th className=''>Assists</th>
+    </tr>
+  </thead>
+  {assists.map((assist) => (
+  <tbody className='' >
+    <tr className='border-b border-cyan-300 '>
+      <td className='flex '><img src={assist.player.photo} className=" w-7 m-2 border-none h-7 border rounded-full"/><p className='mt-[7px] text-cyan-300'>{assist.player.name} </p></td>
+      <td className='flex ml-4'><p className=''>{assist.statistics[0].team.name}</p><img src={assist.statistics[0].team.logo} className=" w-7 ml-2 mb-2 border-none h-7 border rounded-full"/></td>
+      <td className=''>{assist.statistics[0].goals.total}</td>
+    </tr>
+    
+  </tbody>))}  
+</table>
+</div> 
+</div>
+
+<div className='lg:w-[75%] bg-gray-700 lg:m-8 mt-8 w-[350px]'>
+  <h1 className='text-white lg:flex lg:justify-center lg:items-center lg:p-8'>LEAGUE TABLE</h1>
+  <div className='bg-gray-950 pt-8 lg:flex lg:justify-center lg:items-center'style={{ overflowX: 'auto', maxWidth: '100%' }} >
+    <table className='table-auto m-4'>
+      <thead>
+        <tr className='text-lime-300 px-4 border-b border-cyan-300'>
+          <th className='px-4'>Rank</th>
+          <th className=''>Team</th>
+          <th className='px-4'>Played</th>
+          <th className='px-4'>Form</th>
+          <th className='px-4'>GD</th>
+          <th className='px-4'>PTS</th>
+        </tr>
+      </thead>
+      <tbody>
+        {standings.map((team) => (
+          <tr key={team.team.id} className='border-b border-cyan-300 text-cyan-300'>
+            <td className='px-4'>{team?.rank}</td>
+            <td className='px-4 flex items-center' style={{ whiteSpace: 'nowrap' }}>
+              {team?.team?.name}
+              <img src={team?.team?.logo} className="w-7 m-2 border-none h-7 border rounded-full"/>
+            </td>
+            <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.all?.played}</td>
+            <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.form}</td>
+            <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.goalsDiff}</td>
+            <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.points}</td>
           </tr>
-        </thead>
-        <tbody>
-          {standings.map((team) => (
-            <tr key={team.team.id} className='border-b border-cyan-300 text-cyan-300' >
-              <td className='px-4'>{team?.rank}</td>
-              <td className='px-4 flex items-center'>
-                {team?.team?.name}
-                <img src={team?.team?.logo} className="w-7 m-2 border-none h-7 border rounded-full"/>
-              </td>
-              <td className='px-4'>{team?.all?.played}</td>
-              <td className='px-4'>{team?.form}</td>
-              <td className='px-4'>{team?.goalsDiff}</td>
-              <td className='px-4'>{team?.points}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
   </div>
-<div className="h-30 bg-black">
+</div>
+
+  <div className="h-30 bg-black">
 ytttfhhbhhggghhhhhhhhhhhrrjjjjh
 </div>
-
-
 </div>
+
+
+
   );
 }
 
