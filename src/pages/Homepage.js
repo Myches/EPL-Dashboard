@@ -9,7 +9,7 @@ function Homepage() {
   
   
   return (
-    <div className='w-[100%] h-[100%] overflow-auto flex bg-purple-950'>
+    <div className='w-[100%] h-[100vh]  overflow-auto flex bg-purple-950'>
        <Sidebar  />           
       <div>
          <Routes >
