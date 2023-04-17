@@ -199,7 +199,7 @@ function Discover() {
         })} </div>
     
   </div>
-<div className='lg:w-full w-[80%] lg:grid lg:grid-cols-2 lg:gap-4 grid grid-cols-1 m-8 '>
+<div className='lg:w-[95%] w-[80%] lg:grid lg:grid-cols-2 lg:gap-4 grid grid-cols-1 m-8 '>
 <div><h1 className='flex justify-center items-center'>TOP SCORER</h1>
 <div className='bg-gray-950  text-white border-black lg:border rounded-3xl  h-[400px] overflow-auto flex justify-center '>
 
@@ -213,9 +213,9 @@ function Discover() {
   </thead>
   {scorers.map((scorer) => (
   <tbody className='' >
-    <tr className='border-b border-cyan-300 grid grid-cols-3 lg:gap-4 gap-18'>
+    <tr className='border-b border-cyan-300 grid grid-cols-3 lg:gap-4 gap-12'>
       <td className='flex '><img src={scorer.player.photo} className=" w-7 m-2 border-none h-7 border rounded-full"/><p className='mt-[7px] text-cyan-300'>{scorer.player.name} </p></td>
-      <td className='flex sm:ml-8'><p className='flex hidden '>{scorer.statistics[0].team.name}</p><img src={scorer.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full hidden"/></td>
+      <td className='flex ml-8 mt-2'><p className='flex  '>{scorer.statistics[0].team.name}</p><img src={scorer.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full "/></td>
       <td className='lg:pl-28 m-2'>{scorer.statistics[0].goals.total}</td>
     </tr>
     
@@ -237,9 +237,9 @@ function Discover() {
   </thead>
   {assists.map((assist) => (
   <tbody className='' >
-    <tr className='border-b border-cyan-300 grid grid-cols-3 lg:gap-4 gap-12'>
+    <tr className='border-b border-cyan-300 grid grid-cols-3'>
       <td className='flex '><img src={assist.player.photo} className=" w-7 m-2 border-none h-7 border rounded-full"/><p className='mt-[7px] text-cyan-300'>{assist.player.name} </p></td>
-      <td className='flex sm:ml-8 '><p className='flex hidden'>{assist.statistics[0].team.name}</p><img src={assist.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full "/></td>
+      <td className='flex ml-8 mt-2'><p className='flex '>{assist.statistics[0].team.name}</p><img src={assist.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full "/></td>
       <td className='lg:pl-28 m-2'>{assist.statistics[0].goals.total}</td>
     </tr>
     
