@@ -4,6 +4,9 @@ import {MdStadium} from 'react-icons/md'
 import   Slider from 'react-slick'
 import   'slick-carousel/slick/slick.css'  
 import   'slick-carousel/slick/slick-theme.css'
+import intro from './intro.mp4'
+import epl from './epl.mp4'
+
 
 
 function Discover() {
@@ -153,8 +156,11 @@ function Discover() {
 
      return (
  
-   <div className = ' h-[350px] border  px-4 pt-4 bg-[url("./Ppl.png")]  bg-cover relative'>
-    
+   <div className = ' h-[350px] relative'>
+    <video autoPlay loop muted={false} className='absolute top-0 left-0 w-full h-full object-cover z-0'>
+        <source src={intro} type='video/mp4' />
+      </video>
+
 <div className='flex justify-around items-center  border-b border-b border-cyan-300 '> <p>Premier league</p> <p className=''></p>{mod?.fixture?.venue?.name}</div>
 <div className='flex flex-col  justify-center p-4 w-[90%] absolute lg:left-8  bottom-[-30px]  bg-gradient-to-r from-green-500 to-cyan-500'>
 <div className='flex justify-between mx-6'>
@@ -199,7 +205,7 @@ function Discover() {
         })} </div>
     
   </div>
-<div className='lg:w-[95%] w-[80%] lg:grid lg:grid-cols-2 lg:gap-4 grid grid-cols-1 m-8 '>
+<div className='lg:w-[95%] w-[80%] lg:grid lg:grid-cols-2 gap-8 grid grid-cols-1 m-8 text-sm '>
 <div><h1 className='flex justify-center items-center'>TOP SCORER</h1>
 <div className='bg-gray-950  text-white border-black lg:border rounded-3xl  h-[400px] overflow-auto flex justify-center '>
 
@@ -215,7 +221,7 @@ function Discover() {
   <tbody className='' >
     <tr className='border-b border-cyan-300 grid grid-cols-3 lg:gap-4 gap-12'>
       <td className='flex '><img src={scorer.player.photo} className=" w-7 m-2 border-none h-7 border rounded-full"/><p className='mt-[7px] text-cyan-300'>{scorer.player.name} </p></td>
-      <td className='flex ml-8 mt-2'><p className='flex  '>{scorer.statistics[0].team.name}</p><img src={scorer.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full "/></td>
+      <td className='flex ml-8 mt-2'><p className='flex  hidden sm:block'>{scorer.statistics[0].team.name}</p><img src={scorer.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full "/></td>
       <td className='lg:pl-28 m-2'>{scorer.statistics[0].goals.total}</td>
     </tr>
     
@@ -224,7 +230,7 @@ function Discover() {
 </div>
 
 
-<div>  <h1 className='flex justify-center items-center'>TOP SCORER</h1>
+<div>  <h1 className='flex justify-center items-center '>TOP ASSISTS</h1>
 <div className='bg-gray-950  text-white border-black lg:border rounded-3xl  h-[400px] overflow-auto flex justify-center '>
 
 <table className="table-auto  ">
@@ -239,7 +245,7 @@ function Discover() {
   <tbody className='' >
     <tr className='border-b border-cyan-300 grid grid-cols-3'>
       <td className='flex '><img src={assist.player.photo} className=" w-7 m-2 border-none h-7 border rounded-full"/><p className='mt-[7px] text-cyan-300'>{assist.player.name} </p></td>
-      <td className='flex ml-8 mt-2'><p className='flex '>{assist.statistics[0].team.name}</p><img src={assist.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full "/></td>
+      <td className='flex ml-8 mt-2'><p className='flex hidden sm:block'>{assist.statistics[0].team.name}</p><img src={assist.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full "/></td>
       <td className='lg:pl-28 m-2'>{assist.statistics[0].goals.total}</td>
     </tr>
     
@@ -248,8 +254,8 @@ function Discover() {
 </div>
 </div> 
 
-<div className=' bg-gray-700 m-8  grid grid-cols-1 '>
-<h1 className='text-white lg:flex lg:justify-center lg:items-center lg:p-8'>LEAGUE TABLE</h1>
+<div className=' bg-gray-700 m-8  grid grid-cols-1 border rounded-3xl border-none'>
+<h1 className='text-white flex justify-center items-center p-8'>LEAGUE TABLE</h1>
 <div className='bg-gray-950 pt-8 lg:flex lg:justify-center lg:items-center'style={{ overflowX: 'auto', maxWidth: '100%' }}>
 <table className='table-auto m-4'>
       <thead>
@@ -258,6 +264,9 @@ function Discover() {
           <th className=''>Team</th>
           <th className='px-4'>Played</th>
           <th className='px-4'>Form</th>
+          <th className='px-4'>Win</th>
+          <th className='px-4'>Lose</th>
+          <th className='px-4'>Draw</th>
           <th className='px-4'>GD</th>
           <th className='px-4'>PTS</th>
         </tr>
@@ -272,6 +281,9 @@ function Discover() {
             </td>
             <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.all?.played}</td>
             <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.form}</td>
+            <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.all?.win}</td>
+            <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.all?.lose}</td>
+            <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.all?.draw}</td>
             <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.goalsDiff}</td>
             <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.points}</td>
           </tr>
