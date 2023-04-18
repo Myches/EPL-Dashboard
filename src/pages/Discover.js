@@ -24,7 +24,7 @@ function Discover() {
   const fetchFootballData = async () => {
  
    const fixtures = await axios.get(
-     "https://v3.football.api-sports.io/fixtures?league=39&next=5",
+     "https://v3.football.api-sports.io/fixtures?league=39&next=",
      {
        headers: {
          "x-rapidapi-key":'dcae5708933639629a715178535f464b' ,
@@ -37,7 +37,7 @@ function Discover() {
  
 
   const scorers = await axios.get(
-    'https://v3.football.api-sports.io/players/topscorers?season=2022&league=39',
+    'https://v3.football.api-sports.io/players/topscorers?season=2022&league=',
     {
       headers: {
         'x-rapidapi-host': 'v3.football.api-sports.io',
@@ -50,7 +50,7 @@ function Discover() {
 
 
   const assists = await axios.get(
-    'https://v3.football.api-sports.io/players/topassists?season=2022&league=39',
+    'https://v3.football.api-sports.io/players/topassists?season=2022&league=',
     {
       headers: {
         'x-rapidapi-host': 'v3.football.api-sports.io',
@@ -63,7 +63,7 @@ function Discover() {
 
 
   const MOD = await axios.get(
-    "https://v3.football.api-sports.io/fixtures?league=39&next=1",
+    "https://v3.football.api-sports.io/fixtures?league=39&next=",
     {
       headers: {
         "x-rapidapi-key":'dcae5708933639629a715178535f464b' ,
@@ -75,7 +75,7 @@ function Discover() {
  
 
   const standings = await axios.get(
-    "https://v3.football.api-sports.io/standings?league=39&season=2022",
+    "https://v3.football.api-sports.io/standings?league=39&season=",
     {
       headers: {
         "x-rapidapi-key":'dcae5708933639629a715178535f464b' ,
@@ -157,7 +157,7 @@ function Discover() {
      return (
  
    <div className = ' h-[350px] relative'>
-    <video autoPlay loop muted={false} className='absolute top-0 left-0 w-full h-full object-cover z-0'>
+    <video autoPlay={true} loop={false} muted={false} className='absolute top-0 left-0 w-full h-full object-cover z-0'>
         <source src={epl} type='video/mp4' />
       </video>
 
@@ -183,7 +183,7 @@ function Discover() {
 
 <div className='w-[90%]  mt-16 sm:mx-auto'  >
 <h1 className='text-white flex justify-center items-center '>FIXTURES</h1> 
-     <div  className=' text-white bg-gray-700 lg:p-4 border rounded-3xl border-none   lg:flex-row flex flex-col lg:w-[90vw] md:w-[50%] ml-8 sm:mx-auto'style={{ overflowX: 'auto' }} >
+     <div  className=' text-white bg-gray-700 p-4 border rounded-3xl border-none   lg:flex-row flex flex-col lg:w-[90vw] md:w-[50%] ml-8 sm:mx-auto'style={{ overflowX: 'auto' }} >
     
     
     {fixtures.map((fixture) => 
@@ -193,7 +193,7 @@ function Discover() {
       const fixtureTimeString = fixtureDate.toLocaleTimeString('en-US', {hour12: true, hour: 'numeric', minute:'numeric'});
       return (
   
-    <div className=' lg:p-4 m-4 border rounded-lg border-none bg-gray-950 text-sm  md:'>
+    <div className=' p-4 m-4 border rounded-lg border-none bg-gray-950 text-sm  '>
    <p className='flex justify-center items-center text-lime-300 '>{fixture?.league?.round}</p>
    <p className='flex justify-center items-center text-cyan-300'><p className='mr-4'><MdStadium  /></p>{fixture?.fixture?.venue?.name}</p> 
    <p className='flex justify-center items-center text-cyan-300 '>{fixtureDateString }&nbsp;&nbsp;&nbsp;{fixtureTimeString}</p>
