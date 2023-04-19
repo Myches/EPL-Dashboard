@@ -24,7 +24,7 @@ function Discover() {
   const fetchFootballData = async () => {
  
    const fixtures = await axios.get(
-     "https://v3.football.api-sports.io/fixtures?league=39&next=",
+     "https://v3.football.api-sports.io/fixtures?league=39&next=5",
      {
        headers: {
          "x-rapidapi-key":'dcae5708933639629a715178535f464b' ,
@@ -37,7 +37,7 @@ function Discover() {
  
 
   const scorers = await axios.get(
-    'https://v3.football.api-sports.io/players/topscorers?season=2022&league=',
+    'https://v3.football.api-sports.io/players/topscorers?season=2022&league=39',
     {
       headers: {
         'x-rapidapi-host': 'v3.football.api-sports.io',
@@ -50,7 +50,7 @@ function Discover() {
 
 
   const assists = await axios.get(
-    'https://v3.football.api-sports.io/players/topassists?season=2022&league=',
+    'https://v3.football.api-sports.io/players/topassists?season=2022&league=39',
     {
       headers: {
         'x-rapidapi-host': 'v3.football.api-sports.io',
@@ -63,7 +63,7 @@ function Discover() {
 
 
   const MOD = await axios.get(
-    "https://v3.football.api-sports.io/fixtures?league=39&next=",
+    "https://v3.football.api-sports.io/fixtures?league=39&next=1",
     {
       headers: {
         "x-rapidapi-key":'dcae5708933639629a715178535f464b' ,
@@ -75,7 +75,7 @@ function Discover() {
  
 
   const standings = await axios.get(
-    "https://v3.football.api-sports.io/standings?league=39&season=",
+    "https://v3.football.api-sports.io/standings?league=39&season=2022",
     {
       headers: {
         "x-rapidapi-key":'dcae5708933639629a715178535f464b' ,
@@ -149,15 +149,15 @@ function Discover() {
       <p className='text-cyan-300 m-8'>Hi ,Welcome to your EPL Dasboard 😎</p>
 <div className='w-[100vw] lg:w-[80%] mx-auto   flex flex-col mt-4'>
 <h1 className='text-white flex justify-center items-center'>FEATURED</h1>
-{MOD.map((mod) => {
+{MOD.map((mod,index) => {
      const fixtureDate = new Date(mod.fixture.date);
      const fixtureDateString = fixtureDate.toDateString();
      const fixtureTimeString = fixtureDate.toLocaleTimeString('en-US', {hour12: true, hour: 'numeric', minute:'numeric'});
 
      return (
  
-   <div className = ' h-[350px] relative'>
-    <video autoPlay={true} loop={false} muted={false} className='absolute top-0 left-0 w-full h-full object-cover z-0'>
+   <div className = ' h-[350px] relative' key={index}>
+    <video autoPlay playsInline loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0'>
         <source src={epl} type='video/mp4' />
       </video>
 
@@ -186,14 +186,14 @@ function Discover() {
      <div  className=' text-white bg-gray-700 p-4 border rounded-3xl border-none   lg:flex-row flex flex-col lg:w-[90vw] md:w-[50%] ml-8 sm:mx-auto'style={{ overflowX: 'auto' }} >
     
     
-    {fixtures.map((fixture) => 
+    {fixtures.map((fixture,index) => 
      {
       const fixtureDate = new Date(fixture?.fixture?.date);
       const fixtureDateString = fixtureDate.toDateString();
       const fixtureTimeString = fixtureDate.toLocaleTimeString('en-US', {hour12: true, hour: 'numeric', minute:'numeric'});
       return (
   
-    <div className=' p-4 m-4 border rounded-lg border-none bg-gray-950 text-sm  '>
+    <div className=' p-4 m-4 border rounded-lg border-none bg-gray-950 text-sm ' key={index} >
    <p className='flex justify-center items-center text-lime-300 '>{fixture?.league?.round}</p>
    <p className='flex justify-center items-center text-cyan-300'><p className='mr-4'><MdStadium  /></p>{fixture?.fixture?.venue?.name}</p> 
    <p className='flex justify-center items-center text-cyan-300 '>{fixtureDateString }&nbsp;&nbsp;&nbsp;{fixtureTimeString}</p>
@@ -217,9 +217,9 @@ function Discover() {
       <th className=''>GOALS</th>
     </tr>
   </thead>
-  {scorers.map((scorer) => (
+  {scorers.map((scorer ,index) => (
   <tbody className='' >
-    <tr className='border-b border-cyan-300 grid grid-cols-3 gap-12 '>
+    <tr className='border-b border-cyan-300 grid grid-cols-3 gap-12 ' key={index}>
       <td className='flex '><img src={scorer.player.photo} className=" w-7 m-2 border-none h-7 border rounded-full"/><p className='mt-[7px] text-cyan-300'>{scorer.player.name} </p></td>
       <td className='flex ml-8 mt-2'><p className='flex  hidden sm:block'>{scorer.statistics[0].team.name}</p><img src={scorer.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full "/></td>
       <td className='lg:pl-28 m-2'>{scorer.statistics[0].goals.total}</td>
@@ -241,9 +241,9 @@ function Discover() {
       <th className=''>ASSISTS</th>
     </tr>
   </thead>
-  {assists.map((assist) => (
+  {assists.map((assist,index) => (
   <tbody className='' >
-    <tr className='border-b border-cyan-300 grid grid-cols-3 '>
+    <tr className='border-b border-cyan-300 grid grid-cols-3 ' key={index}>
       <td className='flex '><img src={assist.player.photo} className=" w-7 m-2 border-none h-7 border rounded-full"/><p className='mt-[7px] text-cyan-300'>{assist.player.name} </p></td>
       <td className='flex ml-8 mt-2'><p className='flex hidden sm:block'>{assist.statistics[0].team.name}</p><img src={assist.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full "/></td>
       <td className='lg:pl-28 m-2'>{assist.statistics[0].goals.total}</td>
@@ -272,8 +272,8 @@ function Discover() {
         </tr>
       </thead>
       <tbody>
-        {standings.map((team) => (
-          <tr key={team.team.id} className='border-b border-cyan-300 text-cyan-300'>
+        {standings.map((team,index) => (
+          <tr key={team.team.id} className='border-b border-cyan-300 text-cyan-300' key={index}>
             <td className='px-4'>{team?.rank}</td>
             <td className='px-4 flex items-center' style={{ whiteSpace: 'nowrap' }}>
               {team?.team?.name}
