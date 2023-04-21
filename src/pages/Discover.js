@@ -145,8 +145,8 @@ function Discover() {
 
 
   return (
-    <div className='lg:w-[85vw]  w-[100vw] h-[100vh] overflow-auto   my-8'>
-      <p className='text-cyan-300 text-sm flex justify-center items-center'>Hi ,Welcome to your EPL Dasboard 😎</p>
+    <div className='lg:w-[85vw]  w-[87vw] h-[100vh] overflow-auto ml-[-10px]  my-8'style={{ overflowX: 'hidden' }}>
+      <p className='text-cyan-300 text-sm flex justify-center items-center m-4'>Hi ,Welcome to your EPL Dasboard 😎</p>
 <div className='w-[100vw] lg:w-[80%] mx-auto   flex flex-col mt-4'>
 <h1 className='text-white flex justify-center items-center'>FEATURED</h1>
 {MOD.map((mod,index) => {
@@ -156,22 +156,22 @@ function Discover() {
 
      return (
  
-   <div className = ' h-[350px] relative' key={index}>
-    <video autoPlay playsInline loop muted className='absolute top-0 left-0 w-full h-full object-cover z-0'>
+   <div className = ' h-[350px] relative ' key={index}>
+    <video autoPlay playsInline loop muted className='absolute top-0 left-0 w-full h-full object-cover lg:border lg:rounded-3xl border-none z-0'>
         <source src={epl} type='video/mp4' />
       </video>
 
-<div className='flex justify-around items-center  border-b border-b border-cyan-300 '> <p>Premier league</p> <p className=''></p>{mod?.fixture?.venue?.name}</div>
-<div className='flex flex-col  justify-center p-4 w-[90%] absolute lg:left-14 left-4  bottom-[-30px]  bg-gradient-to-r from-green-500 to-cyan-500'>
+
+<div className='flex flex-col  justify-center p-4 w-[87vw] lg:w-[90%] absolute lg:left-14 left-0  bottom-[-30px]  bg-gradient-to-r from-green-500 to-cyan-500'>
 <div className='flex justify-between lg:mx-6 mx-auto '>
-<div className='flex '> <p className='lg:pt-2 '>{mod?.teams?.home?.name}<p className=' hidden lg:block'> HOME</p></p><img src={mod?.teams?.home?.logo} className="  lg:w-14 lg:h-14 w-5 h-5 hidden lg:block "/>  </div>
+<div className='flex '> <p className='lg:pt-2 '>{mod?.teams?.home?.name}<p className=' hidden lg:block'> HOME</p></p><img src={mod?.teams?.home?.logo} className="  lg:w-14 lg:h-14 w-5 h-5 hidden lg:block"/>  </div>
 
  <div className='flex flex-col justify-center items-center ml-2 text-center sm:text-left'><p className='border rounded-lg text-blue-900 bg-gray-300 p-2 text-sm mx-2'>VS</p>
  <p className='mt-4 w-full sm:w-auto'>{fixtureDateString}</p>
   <p className='w-full sm:w-auto'> {fixtureTimeString}</p>
  </div> 
 
-  <div className=' flex '><img src={mod?.teams?.away?.logo} className="lg:ml-2  lg:w-14 lg:h-14 w-5 h-5 hidden lg:block"/> <p className='lg:pt-2 '>{mod?.teams?.away?.name}<p className='lg:pl-4 hidden lg:block'>AWAY</p></p> </div>
+  <div className='flex '><img src={mod?.teams?.away?.logo} className="lg:ml-2  lg:w-14 lg:h-14 w-5 h-5 hidden lg:block"/> <p className='lg:pt-2 '>{mod?.teams?.away?.name}<p className='lg:pl-4 hidden lg:block'>AWAY</p></p> </div>
   </div>
  
   </div> 

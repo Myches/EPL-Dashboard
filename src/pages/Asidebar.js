@@ -17,9 +17,9 @@ function Asidebar() {
   };
 
   return (
-    <div className="w-[10vw] h-screen lg:bg-gray-900 sm:transparent hidden flex flex-col items-center text-white ">
+    <div className="w-[10vw] h-screen lg:bg-gray-900 sm:transparent  flex flex-col items-center text-white ">
       <button className="block md:hidden m-8" onClick={toggleMenu}>
-      <AiOutlineMenu size={20}/>
+      <AiOutlineMenu size={14}/>
       </button>
       <div
         className={`w-[120px] lg:w-[10vw] h-[100vh] z-20 bg-gray-900 mx-auto px-4 text-white ${
