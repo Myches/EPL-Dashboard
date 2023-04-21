@@ -145,8 +145,8 @@ function Discover() {
 
 
   return (
-    <div className=' '>
-      <p className='text-cyan-300 m-8'>Hi ,Welcome to your EPL Dasboard 😎</p>
+    <div className='lg:w-[85vw]  w-[100vw] h-[100vh] overflow-auto   my-8'>
+      <p className='text-cyan-300 text-sm flex justify-center items-center'>Hi ,Welcome to your EPL Dasboard 😎</p>
 <div className='w-[100vw] lg:w-[80%] mx-auto   flex flex-col mt-4'>
 <h1 className='text-white flex justify-center items-center'>FEATURED</h1>
 {MOD.map((mod,index) => {
@@ -183,7 +183,7 @@ function Discover() {
 
 <div className='w-[90%]  mt-16 sm:mx-auto'  >
 <h1 className='text-white flex justify-center items-center '>FIXTURES</h1> 
-     <div  className=' text-white bg-gray-700 p-4 border rounded-3xl border-none   lg:flex-row flex flex-col lg:w-[90vw] md:w-[50%] ml-8 sm:mx-auto'style={{ overflowX: 'auto' }} >
+     <div  className=' text-white bg-gray-700  border rounded-3xl border-none   lg:flex-row flex flex-col lg:w-[90vw] md:w-[50%] ml-8 sm:mx-auto' style={{ overflowX: 'auto' }}>
     
     
     {fixtures.map((fixture,index) => 
@@ -193,7 +193,7 @@ function Discover() {
       const fixtureTimeString = fixtureDate.toLocaleTimeString('en-US', {hour12: true, hour: 'numeric', minute:'numeric'});
       return (
   
-    <div className=' p-4 m-4 border rounded-lg border-none bg-gray-950 text-sm ' key={index} >
+    <div className=' p-4 m-4 border rounded-lg border-none bg-gray-950 text-sm ' key={index}  >
    <p className='flex justify-center items-center text-lime-300 '>{fixture?.league?.round}</p>
    <p className='flex justify-center items-center text-cyan-300'><p className='mr-4'><MdStadium  /></p>{fixture?.fixture?.venue?.name}</p> 
    <p className='flex justify-center items-center text-cyan-300 '>{fixtureDateString }&nbsp;&nbsp;&nbsp;{fixtureTimeString}</p>
