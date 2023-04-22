@@ -9,7 +9,7 @@ function Homepage() {
   
   
   return (
-    <div className='w-[100%] h-screen  overflow-auto  flex  mx-auto bg-purple-950'>
+    <div className='w-[100%] h-screen  overflow-hidden  flex  mx-auto bg-purple-950'>
        <Asidebar  />           
       <div>
          <Routes >

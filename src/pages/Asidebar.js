@@ -17,12 +17,12 @@ function Asidebar() {
   };
 
   return (
-    <div className="w-[10vw] h-screen lg:bg-gray-900 sm:transparent  flex flex-col items-center text-white ">
-      <button className="block md:hidden m-8" onClick={toggleMenu}>
-      <AiOutlineMenu size={14}/>
+    <div className="w-[10vw] h-[100vh] lg:bg-gray-900 sm:transparent  flex flex-col items-center text-cyan-500 ">
+      <button className="block md:hidden m-8 " onClick={toggleMenu}>
+      <AiOutlineMenu size={20}/>
       </button>
       <div
-        className={`w-[120px] lg:w-[10vw] h-[100vh] z-20 bg-gray-900 mx-auto px-4 text-white ${
+        className={`w-[120px] lg:w-[10vw] h-[100vh] z-20 bg-gray-900 mx-auto px-4 text-cyan-500 ${
           isOpen ? 'block' : 'hidden md:block'
         }`}
       >
@@ -31,7 +31,7 @@ function Asidebar() {
         </p>
         <p className="pt-28 pb-8">
           <Link to="/" onClick={toggleMenu}>
-            Discover
+            Dashboard
           </Link>
         </p>
         <p className="pb-8">

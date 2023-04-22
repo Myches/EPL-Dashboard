@@ -145,10 +145,10 @@ function Discover() {
 
 
   return (
-    <div className='lg:w-[85vw]  w-[87vw] h-[100vh] overflow-auto ml-[-10px]  my-8'style={{ overflowX: 'hidden' }}>
-      <p className='text-cyan-300 text-sm flex justify-center items-center m-4'>Hi ,Welcome to your EPL Dasboard 😎</p>
+    <div className='lg:w-[85vw]  w-[87vw] h-[100vh] overflow-y-auto  overflow-x-hidden mt-8'>
+      <p className='text-cyan-500  m-4'>Hi ,Welcome to your EPL Dasboard 😎</p>
 <div className='w-[100vw] lg:w-[80%] mx-auto   flex flex-col mt-4'>
-<h1 className='text-white flex justify-center items-center'>FEATURED</h1>
+<h1 className='text-cyan-500 flex justify-center items-center'>FEATURED</h1>
 {MOD.map((mod,index) => {
      const fixtureDate = new Date(mod.fixture.date);
      const fixtureDateString = fixtureDate.toDateString();
@@ -181,9 +181,9 @@ function Discover() {
       })}
 </div>
 
-<div className='w-[90%]  mt-16 sm:mx-auto'  >
-<h1 className='text-white flex justify-center items-center '>FIXTURES</h1> 
-     <div  className=' text-white bg-gray-700  border rounded-3xl border-none   lg:flex-row flex flex-col lg:w-[90vw] md:w-[50%] ml-8 sm:mx-auto' style={{ overflowX: 'auto' }}>
+<div className='lg:w-[90%] w-full  mt-16 sm:mx-auto'  >
+<h1 className='text-cyan-500 flex justify-center items-center '>FIXTURES</h1> 
+     <div  className=' text-white bg-gray-700  border rounded-3xl border-none   lg:flex-row flex flex-col lg:w-[90vw] md:w-[50%]  sm:mx-auto' style={{ overflowX: 'auto' }}>
     
     
     {fixtures.map((fixture,index) => 
@@ -193,25 +193,25 @@ function Discover() {
       const fixtureTimeString = fixtureDate.toLocaleTimeString('en-US', {hour12: true, hour: 'numeric', minute:'numeric'});
       return (
   
-    <div className=' p-4 m-4 border rounded-lg border-none bg-gray-950 text-sm ' key={index}  >
+    <div className=' p-4 m-4 border rounded-lg border-none bg-gray-950 text-sm lg:w-[230px] w-[250px] mx-auto' key={index}  >
    <p className='flex justify-center items-center text-lime-300 '>{fixture?.league?.round}</p>
    <p className='flex justify-center items-center text-cyan-300'><p className='mr-4'><MdStadium  /></p>{fixture?.fixture?.venue?.name}</p> 
    <p className='flex justify-center items-center text-cyan-300 '>{fixtureDateString }&nbsp;&nbsp;&nbsp;{fixtureTimeString}</p>
     <div className='flex justify-center items-center text-lime-300'>
-  <div className='flex flex-col p-4'><img src={fixture?.teams?.home?.logo} className=" w-8 h-8 "/> <p className='pr-2'> {fixture?.teams?.home?.name}</p> </div> VS <div className='flex flex-col p-4'><img src={fixture?.teams?.away?.logo} className="  w-8 h-8 "/><p className='pr-2' >{fixture?.teams?.away?.name}</p></div>
+  <div className='flex flex-col mx-6'><img src={fixture?.teams?.home?.logo} className=" w-8 h-8 "/> <p className='pr-2'> {fixture?.teams?.home?.name}</p> </div> VS <div className='flex flex-col p-4'><img src={fixture?.teams?.away?.logo} className="  w-8 h-8 "/><p className='pr-2' >{fixture?.teams?.away?.name}</p></div>
   
     </div> </div>
     );
         })} </div>
     
   </div>
-<div className='lg:w-[95%] w-[80%] lg:grid lg:grid-cols-2 gap-8 grid grid-cols-1 m-8   text-sm sm:mx-auto '>
-<div><h1 className='flex justify-center items-center'>TOP SCORER</h1>
-<div className='bg-gray-950  text-white border-black lg:border rounded-3xl  h-[400px] overflow-auto flex justify-center '>
+<div className='lg:w-[95%] w-full lg:grid lg:grid-cols-2 gap-8 grid grid-cols-1 mt-8    sm:mx-auto '>
+<div><h1 className='flex justify-center items-center text-cyan-500'>TOP SCORER</h1>
+<div className='bg-gray-950  text-white border-black lg:border rounded-3xl w-full h-[400px] overflow-auto flex justify-center '>
 
 <table className="table-auto  ">
   <thead className=''>
-    <tr className='border-b  border-cyan-300 text-lime-300 lg:flex lg:justify-between flex justify-evenly m-6  '>
+    <tr className='border-b  border-cyan-300 text-gray-600 lg:flex lg:justify-between flex justify-evenly m-6  '>
       <th className=''>PLAYER</th>
       <th className=''>TEAM</th>
       <th className=''>GOALS</th>
@@ -219,9 +219,9 @@ function Discover() {
   </thead>
   {scorers.map((scorer ,index) => (
   <tbody className='' >
-    <tr className='border-b border-cyan-300 grid grid-cols-3 gap-12 ' key={index}>
-      <td className='flex '><img src={scorer.player.photo} className=" w-7 m-2 border-none h-7 border rounded-full"/><p className='mt-[7px] text-cyan-300'>{scorer.player.name} </p></td>
-      <td className='flex ml-8 mt-2'><p className='flex  hidden sm:block'>{scorer.statistics[0].team.name}</p><img src={scorer.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full "/></td>
+    <tr className='border-b border-cyan-300 grid grid-cols-3 text-lime-200  lg:gap-8 gap-0' key={index}>
+      <td className='flex text-cyan-300'><img src={scorer.player.photo} className=" w-7 m-2 border-none h-7 border rounded-full"/><p className='mt-[7px] '>{scorer.player.name} </p></td>
+      <td className='flex ml-8 mt-2  '><p className='flex  hidden sm:block'>{scorer.statistics[0].team.name}</p><img src={scorer.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full "/></td>
       <td className='lg:pl-28 m-2'>{scorer.statistics[0].goals.total}</td>
     </tr>
     
@@ -230,12 +230,12 @@ function Discover() {
 </div>
 
 
-<div>  <h1 className='flex justify-center items-center '>TOP ASSISTS</h1>
-<div className='bg-gray-950  text-white border-black lg:border rounded-3xl  h-[400px] overflow-auto flex justify-center '>
+<div>  <h1 className='flex justify-center items-center text-cyan-500'>TOP ASSISTS</h1>
+<div className='bg-gray-950   border-black lg:border rounded-3xl w-full h-[400px] overflow-auto flex justify-center '>
 
 <table className="table-auto  ">
   <thead className=''>
-    <tr className='border-b  border-cyan-300 text-lime-300 lg:flex lg:justify-between flex justify-evenly m-6  '>
+    <tr className='border-b  border-cyan-300 text-gray-600 lg:flex lg:justify-between flex justify-evenly m-6  '>
       <th className=''>PLAYER</th>
       <th className=''>TEAM</th>
       <th className=''>ASSISTS</th>
@@ -243,10 +243,10 @@ function Discover() {
   </thead>
   {assists.map((assist,index) => (
   <tbody className='' >
-    <tr className='border-b border-cyan-300 grid grid-cols-3 ' key={index}>
-      <td className='flex '><img src={assist.player.photo} className=" w-7 m-2 border-none h-7 border rounded-full"/><p className='mt-[7px] text-cyan-300'>{assist.player.name} </p></td>
-      <td className='flex ml-8 mt-2'><p className='flex hidden sm:block'>{assist.statistics[0].team.name}</p><img src={assist.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full "/></td>
-      <td className='lg:pl-28 m-2'>{assist.statistics[0].goals.total}</td>
+    <tr className='border-b border-lime-300 text-lime-200 grid grid-cols-3 lg:gap-16 gap-0 ' key={index}>
+      <td className='flex text-cyan-300'><img src={assist.player.photo} className=" w-7 m-2 border-none h-7 border rounded-full"/><p className='mt-[7px] '>{assist.player.name} </p></td>
+      <td className='flex ml-8 mt-2  '><p className='flex hidden sm:block'>{assist.statistics[0].team.name}</p><img src={assist.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full "/></td>
+      <td className='lg:pl-28 m-2 '>{assist.statistics[0].goals.total}</td>
     </tr>
     
   </tbody>))}  
@@ -254,12 +254,12 @@ function Discover() {
 </div>
 </div> 
 
-<div className=' bg-gray-700 m-8 w-[80%] mx-auto grid grid-cols-1 border rounded-3xl border-none'>
-<h1 className='text-white flex justify-center items-center p-8'>LEAGUE TABLE</h1>
+<div className=' bg-gray-700 m-8 lg:w-[80%] w-full mx-auto grid grid-cols-1 border rounded-3xl border-none '>
+<h1 className='text-cyan-500 flex justify-center items-center p-8'>LEAGUE TABLE</h1>
 <div className='bg-gray-950 pt-8 lg:flex lg:justify-center lg:items-center'style={{ overflowX: 'auto', maxWidth: '100%' }}>
 <table className='table-auto m-4'>
       <thead>
-        <tr className='text-lime-300 px-4 border-b border-cyan-300'>
+        <tr className='text-gray-600 px-4 border-b border-cyan-300'>
           <th className='px-4'>Rank</th>
           <th className=''>Team</th>
           <th className='px-4'>Played</th>
@@ -272,20 +272,20 @@ function Discover() {
         </tr>
       </thead>
       <tbody>
-        {standings.map((team,index) => (
-          <tr key={team.team.id} className='border-b border-cyan-300 text-cyan-300' key={index}>
+        {standings.map((team) => (
+          <tr key={team.team.id} className='border-b border-cyan-300 text-lime-300'>
             <td className='px-4'>{team?.rank}</td>
-            <td className='px-4 flex items-center' style={{ whiteSpace: 'nowrap' }}>
+            <td className='px-4 flex items-center ' style={{ whiteSpace: 'nowrap' }}>
               {team?.team?.name}
               <img src={team?.team?.logo} className="w-7 m-2 border-none h-7 border rounded-full"/>
             </td>
-            <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.all?.played}</td>
+            <td className='px-4 ' style={{ whiteSpace: 'nowrap' }}>{team?.all?.played}</td>
             <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.form}</td>
-            <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.all?.win}</td>
+            <td className='px-4 ' style={{ whiteSpace: 'nowrap' }}>{team?.all?.win}</td>
             <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.all?.lose}</td>
-            <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.all?.draw}</td>
+            <td className='px-4 ' style={{ whiteSpace: 'nowrap' }}>{team?.all?.draw}</td>
             <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.goalsDiff}</td>
-            <td className='px-4' style={{ whiteSpace: 'nowrap' }}>{team?.points}</td>
+            <td className='px-4 ' style={{ whiteSpace: 'nowrap' }}>{team?.points}</td>
           </tr>
         ))}
       </tbody>
