@@ -17,7 +17,7 @@ function Asidebar() {
   };
 
   return (
-    <div className="w-[10vw] h-[100vh] lg:bg-gray-900 sm:transparent  flex flex-col items-center text-cyan-500 ">
+    <div className="w-[10vw] h-[100vh] lg:bg-gray-900  flex flex-col items-center text-cyan-500  ">
       <button className="block md:hidden m-8 " onClick={toggleMenu}>
       <AiOutlineMenu size={20}/>
       </button>
@@ -27,7 +27,7 @@ function Asidebar() {
         }`}
       >
         <p>
-          <img src={logo} className="ml-2 w-14 h-14 border rounded-full mt-8" />
+          <img src={logo} className="ml-2 w-14 h-14 border rounded-full mt-8 border-none" />
         </p>
         <p className="pt-28 pb-8">
           <Link to="/" onClick={toggleMenu}>
@@ -40,8 +40,8 @@ function Asidebar() {
           </Link>
         </p>
         <p className="pb-8">
-          <Link to="/Stats" onClick={toggleMenu}>
-            Statistics
+          <Link to="/Livescores" onClick={toggleMenu}>
+            Livescores
           </Link>
         </p>
       </div>

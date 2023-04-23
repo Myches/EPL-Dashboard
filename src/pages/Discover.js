@@ -6,7 +6,7 @@ import   'slick-carousel/slick/slick.css'
 import   'slick-carousel/slick/slick-theme.css'
 import intro from './intro.mp4'
 import epl from './epl.mp4'
-
+import pl_logo from './pl_logo.jpg'
 
 
 function Discover() {
@@ -145,9 +145,9 @@ function Discover() {
 
 
   return (
-    <div className='lg:w-[85vw]  w-[87vw] h-[100vh] overflow-y-auto  overflow-x-hidden mt-8'>
-      <p className='text-cyan-500  m-4'>Hi ,Welcome to your EPL Dasboard 😎</p>
-<div className='w-[100vw] lg:w-[80%] mx-auto   flex flex-col mt-4'>
+    <div className='lg:w-[85vw] mt-8 w-[87vw] h-[100vh]  overflow-y-auto  overflow-x-hidden md:px-8 md:m-8 lg:px-0 lg:m-0' >
+  <h1 className='text-cyan-300 m-8'>Welcome to the English Premier League Dashboard </h1>
+<div className='w-full lg:w-[90%] mx-auto   flex flex-col mt-4'>
 <h1 className='text-cyan-500 flex justify-center items-center'>FEATURED</h1>
 {MOD.map((mod,index) => {
      const fixtureDate = new Date(mod.fixture.date);
@@ -157,12 +157,12 @@ function Discover() {
      return (
  
    <div className = ' h-[350px] relative ' key={index}>
-    <video autoPlay playsInline loop muted className='absolute top-0 left-0 w-full h-full object-cover lg:border lg:rounded-3xl border-none z-0'>
+    <video autoPlay playsInline loop muted className='absolute top-0 left-0 w-full h-full object-cover  lg:border lg:rounded-3xl border-none z-0'>
         <source src={epl} type='video/mp4' />
       </video>
 
 
-<div className='flex flex-col  justify-center p-4 w-[87vw] lg:w-[90%] absolute lg:left-14 left-0  bottom-[-30px]  bg-gradient-to-r from-green-500 to-cyan-500'>
+<div className='flex flex-col  justify-center p-4 w-[87vw] md:w-[79vw] lg:w-[90%] absolute lg:left-14 left-0  bottom-[-30px]  bg-gradient-to-r from-green-500 to-cyan-500'>
 <div className='flex justify-between lg:mx-6 mx-auto '>
 <div className='flex '> <p className='lg:pt-2 '>{mod?.teams?.home?.name}<p className=' hidden lg:block'> HOME</p></p><img src={mod?.teams?.home?.logo} className="  lg:w-14 lg:h-14 w-5 h-5 hidden lg:block"/>  </div>
 
@@ -243,7 +243,7 @@ function Discover() {
   </thead>
   {assists.map((assist,index) => (
   <tbody className='' >
-    <tr className='border-b border-lime-300 text-lime-200 grid grid-cols-3 lg:gap-16 gap-0 ' key={index}>
+    <tr className='border-b border-lime-300 text-lime-200 grid grid-cols-3 lg:gap-8 gap-0 ' key={index}>
       <td className='flex text-cyan-300'><img src={assist.player.photo} className=" w-7 m-2 border-none h-7 border rounded-full"/><p className='mt-[7px] '>{assist.player.name} </p></td>
       <td className='flex ml-8 mt-2  '><p className='flex hidden sm:block'>{assist.statistics[0].team.name}</p><img src={assist.statistics[0].team.logo} className=" w-7 border-none h-7 border rounded-full "/></td>
       <td className='lg:pl-28 m-2 '>{assist.statistics[0].goals.total}</td>
