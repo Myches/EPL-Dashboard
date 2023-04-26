@@ -17,16 +17,16 @@ function Asidebar() {
   };
 
   return (
-    <div className="w-[10vw] h-[100vh] lg:bg-gray-900  flex flex-col items-center text-cyan-500  ">
-    <button className="block md:hidden m-4 " onClick={toggleMenu}>
+    <div className="w-[10vw] h-[100vh] lg:bg-gray-950  flex flex-col items-center text-cyan-500  ">
+    <button className="block md:hidden  absolute right-2 top-2 bg-purple-950" onClick={toggleMenu}>
       <AiOutlineMenu size={20}/>
       </button>
       <div
-        className={`w-[120px] lg:w-[10vw] h-[100vh] z-20 bg-gray-900 mx-auto px-4 text-cyan-500 ${
+        className={`w-[120px] lg:w-[10vw] h-[100vh] z-20 bg-gray-950 mx-auto px-4 text-cyan-500 ${
           isOpen ? 'block' : 'hidden md:block'
         }`}
       >
-        <p>
+        <p>  
           <img src={logo} className="ml-2 w-14 h-14 border rounded-full mt-8 border-none" />
         </p>
         <p className="pt-28 pb-8">
