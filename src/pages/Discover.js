@@ -105,40 +105,6 @@ function Discover() {
  
  
  
- var settings ={
-  dots:true,
-  infinite:true,
-  slidesToShow:4,
-  slidesToScroll:6,
-  Speed:500,
- 
-  responsive : [
- 
-      { breakpoint :600,
-          settings :{
-              slidesToShow:2,
-              slidesToScroll:2,
-              infinite:true,
-              dots:true,
-
-
-          }
-
-      },
-      {breakpoint :480,
-          settings :{
-              slidesToShow:1,
-              slidesToScroll:1,
-              infinite:true,
-              dots:true,
-
-
-          }
-
-      },
-  ]
- 
- } 
 
 
 
@@ -183,6 +149,8 @@ function Discover() {
 
 <div className='lg:w-[90%] w-full  mt-16 sm:mx-auto'  >
 <h1 className='text-cyan-500 flex justify-center items-center '>FIXTURES</h1> 
+
+
      <div  className=' text-white bg-gray-700  border rounded-3xl border-none   lg:flex-row flex flex-col lg:w-[90vw] md:w-[50%]  sm:mx-auto' style={{ overflowX: 'auto' }}>
      
     
@@ -192,8 +160,8 @@ function Discover() {
       const fixtureDateString = fixtureDate.toDateString();
       const fixtureTimeString = fixtureDate.toLocaleTimeString('en-US', {hour12: true, hour: 'numeric', minute:'numeric'});
       return (
-  
-    <div className=' p-6 m-4 border rounded-lg border-none bg-gray-950 text-sm lg:w-[230px] w-[270px] mx-auto' key={index}  >
+       
+    <div className=' p-6 lg:m-4 m-4 border rounded-lg border-none bg-gray-950 text-sm w-[270px] mx-auto' key={index}  >
    <p className='flex justify-center items-center text-lime-300 '>{fixture?.league?.round}</p>
    <p className='flex justify-center items-center text-cyan-300'><p className='mr-4'><MdStadium  /></p>{fixture?.fixture?.venue?.name}</p> 
    <p className='flex justify-center items-center text-cyan-300 '>{fixtureDateString }&nbsp;&nbsp;&nbsp;{fixtureTimeString}</p>

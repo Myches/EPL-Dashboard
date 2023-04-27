@@ -31,12 +31,12 @@ function Livescores () {
 
     return (
       <div className='w-[100vw]  h-[100vh] overflow-y-auto overflow-x-hidden bg-gray-950'>
-        <h1 className='w-[80%] flex justify-center items-center my-12'>LIVE MATCHES</h1>
+        <h1 className='w-[80%] flex justify-center items-center my-12'>LIVESCORES</h1>
        
        
           {livescores.map((match) => (
 
-<div className='md:ml-16'>
+<div className='md:ml-16  '>
        <div className='flex text-gray-300 ml-4 underline '>     <p>{match.league.country}</p>-<p>{match.league.name}</p><img src={match.league.logo} className="w-7 ml-2 border-none h-7 "/></div>
             
        <div key={match.fixture.id} className='grid grid-cols-2 gap-24  ml-8 text-lime-300 w-[100vw]  py-4 '>

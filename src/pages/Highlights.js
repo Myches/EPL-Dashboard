@@ -26,7 +26,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <div className='p-8 h-[100vh] overflow-auto'>
+    <div className='p-8 h-[100vh] overflow-auto '>
       <p className=' m-8 flex justify-center items-center text-cyan-300 '>MATCH HIGHLIGHTS</p>
 
       <div className='lg:grid lg:grid-cols-4  gap-8 grid grid-cols-1 '>
