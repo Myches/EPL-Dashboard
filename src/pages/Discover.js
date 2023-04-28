@@ -4,19 +4,19 @@ import {MdStadium} from 'react-icons/md'
 import   Slider from 'react-slick'
 import   'slick-carousel/slick/slick.css'  
 import   'slick-carousel/slick/slick-theme.css'
-import intro from './intro.mp4'
+
 import epl from './epl.mp4'
-import pl_logo from './pl_logo.jpg'
+
+
 
 
 function Discover() {
 
-  const [league, setLeague] = useState([]);
+
   const [standings, setStandings] = useState([]);
   const [fixtures, setFixtures] = useState([]);
   const [scorers, setScorers] = useState([]);
   const [assists, setAssists] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [MOD, setMOD] = useState([]);
 
 
@@ -86,17 +86,7 @@ function Discover() {
   setStandings(standings.data.response[0].league.standings[0]);
   console.log(standings.data.response[0].league.standings[0])
   
-  const league = await axios.get(
-    'https://v3.football.api-sports.io/leagues',
-    {
-      headers: {
-        'x-rapidapi-host': 'v3.football.api-sports.io',
-        'x-rapidapi-key': 'dcae5708933639629a715178535f464b',
-    
-    }}
-  );
-  setLeague(league.data.response);
-  console.log(league.data.response)
+
  } 
    
  useEffect(() => {
@@ -104,7 +94,55 @@ function Discover() {
  }, []);
  
  
- 
+ const sliderSettings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true ,
+  speed: 2000,
+  autoplaySpeed: 2000,
+  cssEase: "linear",
+
+  responsive : [
+    {breakpoint :1024,
+        settings :{
+            slidesToShow:3,
+            slidesToScroll:1,
+            infinite:true,
+            dots:true,
+
+
+        }
+
+    },
+    { breakpoint :600,
+        settings :{
+            slidesToShow:2,
+            slidesToScroll:1,
+            infinite:true,
+            dots:true,
+
+
+        }
+
+    },
+    {breakpoint :480,
+        settings :{
+            slidesToShow:1,
+            slidesToScroll:1,
+            infinite:true,
+            dots:true,
+
+
+        }
+
+    },
+]
+
+
+};
 
 
 
@@ -128,7 +166,7 @@ function Discover() {
       </video>
 
 
-<div className='flex flex-col  justify-center p-4 w-[87vw] md:w-[79vw] lg:w-[90%] absolute lg:left-14 left-2 md:left-0  bottom-[-30px]  bg-gradient-to-r from-green-500 to-cyan-500'>
+<div className='flex flex-col  justify-center p-4 w-[87vw] md:w-[77vw] lg:w-[90%] absolute lg:left-14 left-2 md:left-0  bottom-[-30px]  bg-gradient-to-r from-green-500 to-cyan-500'>
 <div className='flex justify-between lg:mx-6 mx-auto '>
 <div className='flex '> <p className='lg:pt-2 '>{mod?.teams?.home?.name}<p className=' hidden lg:block'> HOME</p></p><img src={mod?.teams?.home?.logo} className="  lg:w-14 lg:h-14 w-5 h-5 hidden lg:block"/>  </div>
 
@@ -151,17 +189,17 @@ function Discover() {
 <h1 className='text-cyan-500 flex justify-center items-center '>FIXTURES</h1> 
 
 
-     <div  className=' text-white bg-gray-700  border rounded-3xl border-none   lg:flex-row flex flex-col lg:w-[90vw] md:w-[50%]  sm:mx-auto' style={{ overflowX: 'auto' }}>
+     <div  className=' text-white bg-gray-700  border rounded-3xl border-none  hidden lg:block  ' >
      
-    
-    {fixtures.map((fixture,index) => 
+     <Slider {...sliderSettings}>
+   { fixtures.map((fixture,index) => 
      {
       const fixtureDate = new Date(fixture?.fixture?.date);
       const fixtureDateString = fixtureDate.toDateString();
       const fixtureTimeString = fixtureDate.toLocaleTimeString('en-US', {hour12: true, hour: 'numeric', minute:'numeric'});
       return (
-       
-    <div className=' p-6 lg:m-4 m-4 border rounded-lg border-none bg-gray-950 text-sm w-[270px] mx-auto' key={index}  >
+        
+    <div className=' p-6 m-8 mx-18 border border-lime-300 rounded-lg  bg-gray-950 text-sm  w-[250px] h-[230px]' key={index}  >
    <p className='flex justify-center items-center text-lime-300 '>{fixture?.league?.round}</p>
    <p className='flex justify-center items-center text-cyan-300'><p className='mr-4'><MdStadium  /></p>{fixture?.fixture?.venue?.name}</p> 
    <p className='flex justify-center items-center text-cyan-300 '>{fixtureDateString }&nbsp;&nbsp;&nbsp;{fixtureTimeString}</p>
@@ -170,8 +208,31 @@ function Discover() {
   
     </div> </div>
     );
-        })} </div>
-    
+        })}</Slider> </div>
+
+
+<div  className=' text-white bg-gray-700  border rounded-3xl border-none  block lg:hidden py-4 lg:w-[90vw] md:w-[50%] sm:flex flex-col  sm:mx-auto ' >
+     
+   
+   { fixtures.map((fixture,index) => 
+     {
+      const fixtureDate = new Date(fixture?.fixture?.date);
+      const fixtureDateString = fixtureDate.toDateString();
+      const fixtureTimeString = fixtureDate.toLocaleTimeString('en-US', {hour12: true, hour: 'numeric', minute:'numeric'});
+      return (
+        
+    <div className='  md:mx-auto border rounded-lg border-none bg-gray-950 text-sm  p-6 m-4 w-[270px] mx-auto' key={index}  >
+   <p className='flex justify-center items-center text-lime-300 '>{fixture?.league?.round}</p>
+   <p className='flex justify-center items-center text-cyan-300'><p className='mr-4'><MdStadium  /></p>{fixture?.fixture?.venue?.name}</p> 
+   <p className='flex justify-center items-center text-cyan-300 '>{fixtureDateString }&nbsp;&nbsp;&nbsp;{fixtureTimeString}</p>
+    <div className='flex justify-center items-center text-lime-300'>
+  <div className='flex flex-col mx-6'><img src={fixture?.teams?.home?.logo} className=" w-8 h-8 "/> <p className='pr-2'> {fixture?.teams?.home?.name}</p> </div> VS <div className='flex flex-col p-4'><img src={fixture?.teams?.away?.logo} className="  w-8 h-8 "/><p className='pr-2' >{fixture?.teams?.away?.name}</p></div>
+  
+    </div> </div>
+    );
+        })}</div>
+
+
   </div>
 <div className='lg:w-[95%] w-full lg:grid lg:grid-cols-2 gap-8 grid grid-cols-1 mt-8    sm:mx-auto '>
 <div><h1 className='flex justify-center items-center text-cyan-500'>TOP SCORERS</h1>

@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom"
-import axios from 'axios'
-import { useState, useEffect } from 'react';
-import logo from './logo.jpeg'
+import { useState } from 'react';
 import images from './images.png'
-import {AiOutlineClose,AiOutlineMenu} from 'react-icons/ai'
+import {AiOutlineMenu} from 'react-icons/ai'
 
 
 
@@ -27,7 +25,7 @@ function Asidebar() {
         }`}
       >
         <p>  
-          <img src={images} className="   mt-8 border-none" />
+          <img src={images} className="   mt-8 border-none border rounded-lg" />
         </p>
         <p className="pt-28 pb-8">
           <Link to="/" onClick={toggleMenu}>
