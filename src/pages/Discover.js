@@ -37,7 +37,7 @@ function Discover() {
  
 
   const scorers = await axios.get(
-    'https://v3.football.api-sports.io/players/topscorers?season=2022&league=39',
+    'https://v3.football.api-sports.io/players/topscorers?season=2023&league=39',
     {
       headers: {
         'x-rapidapi-host': 'v3.football.api-sports.io',
@@ -50,7 +50,7 @@ function Discover() {
 
 
   const assists = await axios.get(
-    'https://v3.football.api-sports.io/players/topassists?season=2022&league=39',
+    'https://v3.football.api-sports.io/players/topassists?season=2023&league=39',
     {
       headers: {
         'x-rapidapi-host': 'v3.football.api-sports.io',
@@ -75,7 +75,7 @@ function Discover() {
  
 
   const standings = await axios.get(
-    "https://v3.football.api-sports.io/standings?league=39&season=2022",
+    "https://v3.football.api-sports.io/standings?league=39&season=2023",
     {
       headers: {
         "x-rapidapi-key":'dcae5708933639629a715178535f464b' ,
@@ -95,61 +95,48 @@ function Discover() {
  
  
  const sliderSettings = {
-  dots: true,
-  infinite: true,
+  dots: false,
+  infinite: false,
   speed: 500,
   slidesToShow: 3,
   slidesToScroll: 1,
-  autoplay: true ,
-  speed: 2000,
-  autoplaySpeed: 2000,
-  cssEase: "linear",
-
-  responsive : [
-    {breakpoint :1024,
-        settings :{
-            slidesToShow:3,
-            slidesToScroll:1,
-            infinite:true,
-            dots:true,
-
-
-        }
-
+  initialSlide: 0,
+  autoPlay:true,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true,
+      },
     },
-    { breakpoint :600,
-        settings :{
-            slidesToShow:2,
-            slidesToScroll:1,
-            infinite:true,
-            dots:true,
-
-
-        }
-
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
     },
-    {breakpoint :480,
-        settings :{
-            slidesToShow:1,
-            slidesToScroll:1,
-            infinite:true,
-            dots:true,
-
-
-        }
-
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
     },
-]
-
-
+  ],
 };
 
 
 
 
 
+
   return (
-    <div className='lg:w-[85vw] mt-8  w-[95%] h-[100vh]  overflow-y-auto  overflow-x-hidden md:px-8 md:m-8 lg:px-0 lg:m-0' >
+    <div className='lg:w-[85vw] mt-8 pb-12 w-[95%] h-[100vh]  overflow-y-auto  overflow-x-hidden md:px-8 md:m-8 lg:px-0 lg:m-0' >
   <h1 className='text-cyan-300 m-8'>Welcome to the English Premier League Dashboard </h1>
 <div className='w-full lg:w-[90%] mx-auto   flex flex-col mt-4'>
 <h1 className='text-cyan-500 flex justify-center items-center'>FEATURED</h1>
@@ -199,7 +186,7 @@ function Discover() {
       const fixtureTimeString = fixtureDate.toLocaleTimeString('en-US', {hour12: true, hour: 'numeric', minute:'numeric'});
       return (
         
-    <div className=' p-6 m-8 mx-18 border border-lime-300 rounded-lg  bg-gray-950 text-sm  w-[250px] h-[230px]' key={index}  >
+    <div className=' p-6 m-8 mx-18 border border-lime-300 rounded-lg  bg-gray-950 text-sm  w-[250px] h-[200px]' key={index}  >
    <p className='flex justify-center items-center text-lime-300 '>{fixture?.league?.round}</p>
    <p className='flex justify-center items-center text-cyan-300'><p className='mr-4'><MdStadium  /></p>{fixture?.fixture?.venue?.name}</p> 
    <p className='flex justify-center items-center text-cyan-300 '>{fixtureDateString }&nbsp;&nbsp;&nbsp;{fixtureTimeString}</p>
